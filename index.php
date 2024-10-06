@@ -9,14 +9,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Task Management</title>
-    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="istyle.css">
 </head>
 <body>
     <header class="header">
         <nav class="navbar">
             <a href="#tasks">Dashboard</a>
             <a href="#addSection">Add Task</a>
-            <a href="#search"></a>
         </nav>
     </header>
 
@@ -28,7 +28,7 @@
                 </h1>
                 <form action="process.php" method="GET">
                     <div class="searchInput">
-                        <input type="text" name="searchTask" value="<?php if(isset($_GET['searchTask'])){echo $_GET['searchTask'];}?>" class="form-control" placeholder="Search task" required>
+                        <input type="text" name="searchTask" value="<?php if(isset($_GET['searchTask'])){echo $_GET['searchTask'];}?>" class="searchTask" placeholder="Search task" required>
                         <button name="submit" class="btn btn-primary">Search</button>
                     </div>
                 </form>
@@ -55,7 +55,7 @@
                                 <td><?= $task['taskdescription']; ?></td>
                                 <td><?= $task['duedate']; ?></td>
                                 <td>
-                                    <a href="task-edit.php?id=<?= $task['tasknumber']; ?>" class="btn btn-success btn-sm">Edit</a>
+                                    <a href="taskedit.php?id=<?= $task['tasknumber']; ?>" class="btn btn-success btn-sm">Edit</a>
                                     <form action="process.php" method="POST" class="d-inline">
                                         <button type="submit" name="deletetask" value="<?= $task['tasknumber'];?>" class="btn btn-danger btn-sm">Delete</button>
                                     </form>
