@@ -20,6 +20,7 @@
         }
         .card{
             box-shadow: 0 0 10px rgba(0, 0, 0, 1);
+            align-items: center;
         }
         .card-body {
             background-color: rgb(173, 172, 158);
@@ -70,7 +71,6 @@
                                         <input type="text" name="dscription" value="<?=$task['taskdescription'];?>" class="addData" required><br>
                                         <label for="duedate">Due Date:</label><br>
                                         <input type="date" id="duedate" name="duedate" value="<?=$task['duedate'];?>" class="addData" required>
-
                                     </div>
                         
                                     <div class="mb-3">
@@ -90,16 +90,6 @@
                 </div>
             </div>
         </div>
-
-
-
-        
-
-
-
-       
-
-
 
     
     <!-- Option 1: Bootstrap Bundle with Popper -->

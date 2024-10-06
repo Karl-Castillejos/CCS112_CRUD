@@ -1,0 +1,112 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: rgb(53, 66, 53);
+    
+}
+
+
+.header {
+    position: fixed;
+    width: 100%;
+    padding: 20px 10%;
+    background: rgb(130, 150, 92);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+}
+
+.logo {
+    font-size: 25px;
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.navbar a{
+    font-size: 18px;
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    font-weight: 600;
+    margin-left: 35px;
+    transition: .3s;
+}
+
+.navbar a:hover,
+.navbar a.active {
+    color: rgb(0, 0, 0);
+}
+
+.add {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+/* .tasks, .addSection {
+    height: 100vh;
+    padding: 0 5%;
+} */
+
+.tasks, .addSection {
+    display: flex;
+    flex-direction: column ;
+    margin-top: 100px;
+    height: 100vh;
+    /* padding: 0 5%; */
+}
+
+.searchTask {
+    width: 500px;
+}
+
+/* .addSection form { 
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+    /* height: 250px; */
+    /* background: rgb(173, 172, 158);
+    padding: 20px;
+    border-radius: 25px;
+} */ 
+
+.table{
+    background: rgb(173, 172, 158);
+}
+
+
+
+th {
+    /* background-color: #5a805b; */
+    color: rgb(0, 0, 0);
+    padding: 12px;
+    /* border: 1px solid #000000; */
+    text-align: center;
+    /* height: 50px; */
+}
+
+.td {
+    color: rgb(173, 172, 158);
+}
+
+.btnAdd {
+    border: none;
+    border-radius: 5px;
+    background-color: #28a745;
+    color: white;
+    cursor: pointer;
+    margin-left: 4px;
+}
+
+.dashboard {
+    height: 100vh;
+    display: flex;
+    padding: 0 10%;
+}
+
