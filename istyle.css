@@ -6,7 +6,7 @@
 }
 
 body {
-    background: rgb(53, 66, 53);
+    background: rgb(255, 255, 255);
     
 }
 
@@ -57,7 +57,7 @@ body {
 }
 
 .searchTask {
-    width: 250px;
+    width: 500px;
 }
 
 .table{
@@ -68,7 +68,6 @@ body {
 th {
     color: rgb(0, 0, 0);
     padding: 12px;
-    border: 1px solid #000000;
     text-align: center;
 }
 
