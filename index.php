@@ -33,7 +33,7 @@
         <!-- Section for displaying tasks -->
         <section id="tasks">
             <div class="tasks">
-                <h1>Tasks To Do
+                <h1>Create New Task.
                     <!-- Button to navigate to the add task form -->
                     <a href="#addSection" class="btn float-end">Add Task</a>
                 </h1>
