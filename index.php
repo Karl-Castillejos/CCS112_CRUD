@@ -1,9 +1,10 @@
 <?php 
-    // Start the session to use session variables
+    // Start the session to track user-specific data
     session_start();
     
     // Include the connection file to connect to the database
-    require 'connect.php';
+    require 'connect.php'; 
+    // BUG: No check for the success of including 'connect.php'. If the file is missing or connection fails, it will break the code. Add error handling.
 ?>
 
 <!DOCTYPE html>
@@ -40,7 +41,7 @@
                 <!-- Form to search for a task -->
                 <form action="" method="GET">
                     <div class="searchInput">
-                        <!-- Search field, retains the value on page reload -->
+                        <!-- Search field retains the entered value after submission -->
                         <input type="text" name="searchTask" value="<?php if(isset($_GET['searchTask'])){echo $_GET['searchTask'];}?>" class="searchTask" placeholder="Search task" required>
                         <button name="submit" class="btn btn-primary">Search</button>
                     </div>
@@ -48,9 +49,10 @@
                         <table  class="table table-bordered">
                             
                             <?php
-
+                            // BUG: Missing validation and sanitization for the search input to prevent SQL injection attacks.
                             if(isset($_GET['searchTask'])){
                                 $filtervalues = $_GET['searchTask'];
+                                // BUG: Using concatenation in the query without prepared statements exposes the application to SQL injection.
                                 $query = "SELECT * FROM tasktable WHERE CONCAT(tasktitle, taskdescription, duedate) LIKE'%$filtervalues%' ";
                                 $query_run = mysqli_query($con, $query);
 
@@ -71,8 +73,7 @@
                                         </tr>
                                         <?php
                                     }
-                                
-                                }else{
+                                } else {
                                     ?>
                                         <tr>
                                             <td colspan="6">No Record Found</td>
@@ -84,8 +85,6 @@
 
                         </table>
                     </div>     
-
-
                 </form>
 
                 <!-- Table for displaying tasks -->
@@ -103,7 +102,7 @@
                     $query = "SELECT * FROM tasktable";
                     $query_run = mysqli_query($con, $query);
 
-                    // Check if any tasks exist in the database
+                    // BUG: No error handling in case the query fails. Always check if $query_run returns false.
                     if(mysqli_num_rows($query_run) > 0){
                         // Loop through each task and display it in a table row
                         foreach($query_run as $task){
@@ -117,7 +116,7 @@
                                     <!-- Edit button links to taskedit.php with the task's id -->
                                     <a href="taskedit.php?id=<?= $task['tasknumber']; ?>" class="btn btn-success btn-sm">Edit</a>
                                     
-                                    <!-- Delete button, sends POST request to process.php to delete the task -->
+                                    <!-- Delete button sends POST request to process.php to delete the task -->
                                     <form action="process.php" method="POST" class="d-inline">
                                         <button type="submit" name="deletetask" value="<?= $task['tasknumber']; ?>" class="btn btn-danger btn-sm">Delete</button>
                                     </form>
@@ -125,17 +124,15 @@
                             </tr>
                             <?php
                         }
-
-                    }else{
+                    } else {
                         // If no records found, display this message
                         ?>
                             <tr>
-                                <td colspan="2">No Record Found</td>
+                                <td colspan="5">No Record Found</td>
                             </tr>
                         <?php
                     }
                     ?>
-
                 </table>
             </div>
 
