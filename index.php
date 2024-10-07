@@ -142,6 +142,7 @@
         </section>
         
         <!-- Section for adding a new task -->
+         //Adding task has no restrictions available that it allows integer to be entered in the system
         <section id="addSection">
             <div class="addSection">
                 <form action="process.php" method="POST">
