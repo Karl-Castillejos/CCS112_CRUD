@@ -38,12 +38,54 @@
                 </h1>
                 
                 <!-- Form to search for a task -->
-                <form action="process.php" method="GET">
+                <form action="" method="GET">
                     <div class="searchInput">
                         <!-- Search field, retains the value on page reload -->
                         <input type="text" name="searchTask" value="<?php if(isset($_GET['searchTask'])){echo $_GET['searchTask'];}?>" class="searchTask" placeholder="Search task" required>
                         <button name="submit" class="btn btn-primary">Search</button>
                     </div>
+                    <div class="result">
+                        <table  class="table table-bordered">
+                            
+                            <?php
+
+                            if(isset($_GET['searchTask'])){
+                                $filtervalues = $_GET['searchTask'];
+                                $query = "SELECT * FROM tasktable WHERE CONCAT(tasktitle, taskdescription, duedate) LIKE'%$filtervalues%' ";
+                                $query_run = mysqli_query($con, $query);
+
+                                if(mysqli_num_rows($query_run) > 0){
+                                    foreach($query_run as $task){
+                                        ?>
+                                        <tr>
+                                            <th>Task Number</th>
+                                            <th>Task Title</th>
+                                            <th>Description</th>
+                                            <th>Due Date</th>
+                                        </tr>
+                                        <tr>
+                                            <td><?= $task['tasknumber']; ?></td>
+                                            <td><?= $task['tasktitle']; ?></td>
+                                            <td><?= $task['taskdescription']; ?></td>
+                                            <td><?= $task['duedate']; ?></td>
+                                        </tr>
+                                        <?php
+                                    }
+                                
+                                }else{
+                                    ?>
+                                        <tr>
+                                            <td colspan="6">No Record Found</td>
+                                        </tr>
+                                    <?php
+                                }
+                            } 
+                            ?>
+
+                        </table>
+                    </div>     
+
+
                 </form>
 
                 <!-- Table for displaying tasks -->
